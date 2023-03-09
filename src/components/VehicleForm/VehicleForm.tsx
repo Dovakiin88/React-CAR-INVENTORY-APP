@@ -12,17 +12,17 @@ interface VehicleFormProps{
 }
 
 interface VehicleState{
-  name: string;
-  email: string;
-  address: string;
-  Phone_number: string;
+  year: string;
+  make: string;
+  model: string;
+  msrp: string;
 };
 
 export const VehicleForm = (props:VehicleFormProps) => {
 
   const dispatch = useDispatch();
   const store = useStore();
-  const name = useSelector<VehicleState>(state => state.name)
+  const name = useSelector<VehicleState>(state => state.year)
   const { register, handleSubmit} = useForm({})
 
   const onSubmit = (data:any, event:any) => {
@@ -47,19 +47,19 @@ export const VehicleForm = (props:VehicleFormProps) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="name">Year of Vehicle</label>
-          <Input {...register('name')} name='name' placeholder='Name'/>
+          <Input {...register('Year')} name='name' placeholder='Year'/>
         </div>
         <div>
-          <label htmlFor="email">Vehicle Make</label>
-          <Input {...register('email')} name='email' placeholder='Email'/>
+          <label htmlFor="make">Vehicle Make</label>
+          <Input {...register('make')} name='make' placeholder='Make'/>
         </div>
         <div>
-          <label htmlFor="phone_number">Vehicle Model</label>
-          <Input {...register('phone_number')} name='phone_number' placeholder='Phone Number'/>
+          <label htmlFor="model">Vehicle Model</label>
+          <Input {...register('model')} name='phone_number' placeholder='Model'/>
         </div>
         <div>
-          <label htmlFor="address">MSRP</label>
-          <Input {...register('address')} name='address' placeholder='Address'/>
+          <label htmlFor="msrp">MSRP</label>
+          <Input {...register('value')} name='value' placeholder='MSRP'/>
         </div>
         <Button type='submit'>Submit</Button>
       </form>
