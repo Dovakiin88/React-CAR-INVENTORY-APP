@@ -15,7 +15,7 @@ interface VehicleState{
   year: string;
   make: string;
   model: string;
-  msrp: string;
+  value: string;
 };
 
 export const VehicleForm = (props:VehicleFormProps) => {
@@ -31,12 +31,20 @@ export const VehicleForm = (props:VehicleFormProps) => {
       server_calls.update(props.id!, data);
       console.log(`Updated:${data} ${props.id}`);
       console.log(data);
-      setTimeout( () => {window.location.reload()}, 1000);
+      console.log(data.year)
+      console.log(data.make)
+      console.log(data.model)
+      console.log(data.value)
+      setTimeout( () => {window.location.reload()}, 10000);
       event.target.reset();
     }else{
+      console.log(data.year)
       dispatch(chooseyear(data.year));
+      console.log(data.make)
       dispatch(choosemake(data.make));
+      console.log(data.model)
       dispatch(choosemodel(data.model));
+      console.log(data.value)
       dispatch(choosevalue(data.value));
       server_calls.create(store.getState());
       setTimeout( () => {window.location.reload()}, 1000);
@@ -47,7 +55,7 @@ export const VehicleForm = (props:VehicleFormProps) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="name">Year of Vehicle</label>
-          <Input {...register('Year')} name='name' placeholder='Year'/>
+          <Input {...register('year')} name='year' placeholder='Year'/>
         </div>
         <div>
           <label htmlFor="make">Vehicle Make</label>
@@ -55,7 +63,7 @@ export const VehicleForm = (props:VehicleFormProps) => {
         </div>
         <div>
           <label htmlFor="model">Vehicle Model</label>
-          <Input {...register('model')} name='phone_number' placeholder='Model'/>
+          <Input {...register('model')} name='model' placeholder='Model'/>
         </div>
         <div>
           <label htmlFor="msrp">MSRP</label>

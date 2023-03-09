@@ -33,6 +33,7 @@ export const server_calls = {
 
         return await response.json()
     },
+    
     update: async (id:string, data:any = {}) => {
         const response = await fetch(`https://tundra-chartreuse-icebreaker.glitch.me/api/stock/${id}`, {
             method: 'POST',
