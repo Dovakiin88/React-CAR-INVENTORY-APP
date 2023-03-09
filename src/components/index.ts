@@ -1,5 +1,4 @@
 export * from './Home'
 export * from './Cars'
-export * from './Navbar'
-export * from './DataTable'
 export * from './VehicleForm'
+export * from './SignIn'

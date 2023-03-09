@@ -67,23 +67,27 @@ export const Navbar =() => {
     <div className= {`${classes.row} ${classes.navbar} ${classes.width100} ${classes.alignCenter} ${classes.p5} ${classes.spaceBetween} `}>
         <div className= {`${classes.width60} ${classes.alignCenter}`}>
             <ul className= {`${classes.ul} ${classes.row} ${classes.spaceBetween} ${classes.psides}`}>
-                    <li>
-                        <Button>
-                             <Link to='/SignIn' className={`${classes.navbarItem} ${classes.psides}`}> Sign In</Link>
-                        </Button>
-                    </li>
-                    
-                    <li>
-                         <Button>
-                            <Link to= '/Cars' className= {`${classes.navbarItem} ${classes.psides}`}>Auto Inventory</Link>
-                        </Button>
-                    </li>
-
-                    <li>
-                        <Button>
-                            <Link to= '/About' className= {`${classes.navbarItem} ${classes.psides}`}>About Us</Link>
-                        </Button>
-                     </li>
+                <Suspense fallback={ 'loading.......' }>
+                    <AuthCheck fallback= {
+                        <li>
+                            <Button>
+                                <Link to='/SignIn' className={`${classes.navbarItem} ${classes.psides}`}> Sign In</Link>
+                            </Button>
+                        </li>
+                    }>
+                        <li>
+                            <Button>
+                                <Link to= '/Cars' className= {`${classes.navbarItem} ${classes.psides}`}>Auto Inventory</Link>
+                            </Button>
+                        </li>
+                        
+                        <li>
+                            <Button>
+                                <Link to= '/About' className= {`${classes.navbarItem} ${classes.psides}`}>About Us</Link>
+                            </Button>
+                        </li>
+                    </AuthCheck>
+                </Suspense>
             </ul>
         </div>
     </div>
